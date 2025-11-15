@@ -1,0 +1,17 @@
+server:
+  port: 8080  # 应用端口
+  servlet:
+    context-path: /a
+
+spring:
+  application:
+    name: cloud-servicea # 服务名称，注册到 Nacos
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.5:8848
+      serverAddr: 192.168.1.5:8848
+  config:
+    import:
+      - nacos:cloud-servicea.properties?refreshEnabled=true

@@ -1,5 +1,5 @@
 server:
-  port: 8080  # 应用端口
+  port: 18080  # 应用端口
   servlet:
     context-path: /a
 
@@ -10,8 +10,25 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.1.5:8848
-      serverAddr: 192.168.1.5:8848
+        server-addr: 192.168.142.130:8848
+      serverAddr: 192.168.142.130:8848
+      username: nacos
+      password: nacos
   config:
     import:
       - nacos:cloud-servicea.properties?refreshEnabled=true
+    loadbalancer:
+      ribbon:
+        enabled: false
+      nacos:
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    com.alibaba.cloud.nacos.configdata: debug
